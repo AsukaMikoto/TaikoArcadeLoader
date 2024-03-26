@@ -60,24 +60,24 @@ HOOK_DYNAMIC (i64, __fastcall, UsbFinderGetSerialNumber, i32 a1, char *a2) {
 	strcpy (a2, "284111080001");
 	return 0;
 }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_DevReset) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReadMifare) { return 0xFFFFFF9C; }
-HOOK_DYNAMIC (void, __stdcall, bngrw_fin) { return; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_GetFwVersion) { return 0; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_GetStationID) { return 0; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_GetRetryCount) { return 0; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_IsCmdExec) { return 0xFFFFFFFF; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqAction) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqAiccAuth) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqBeep) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqFwCleanup) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqFwVersionUp) { return 1; }
-HOOK_DYNAMIC (i32, __stdcall, bngrw_ReqLatchID) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqLed) { return 1; }
-HOOK_DYNAMIC (i32, __stdcall, bngrw_ReqSendMail) { return 1; }
-HOOK_DYNAMIC (i32, __stdcall, bngrw_ReqSendUrl) { return 1; }
-HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqSetLedPower) { return 0; }
-HOOK_DYNAMIC (i32, __stdcall, bngrw_reqCancel) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_DevReset) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReadMifare) { return 0xFFFFFF9C; }
+// HOOK_DYNAMIC (void, __stdcall, bngrw_fin) { return; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_GetFwVersion) { return 0; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_GetStationID) { return 0; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_GetRetryCount) { return 0; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_IsCmdExec) { return 0xFFFFFFFF; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqAction) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqAiccAuth) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqBeep) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqFwCleanup) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqFwVersionUp) { return 1; }
+// HOOK_DYNAMIC (i32, __stdcall, bngrw_ReqLatchID) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqLed) { return 1; }
+// HOOK_DYNAMIC (i32, __stdcall, bngrw_ReqSendMail) { return 1; }
+// HOOK_DYNAMIC (i32, __stdcall, bngrw_ReqSendUrl) { return 1; }
+// HOOK_DYNAMIC (u64, __stdcall, bngrw_ReqSetLedPower) { return 0; }
+// HOOK_DYNAMIC (i32, __stdcall, bngrw_reqCancel) { return 1; }
 
 HOOK_DYNAMIC (i32, __stdcall, ssleay_Shutdown) { return 1; }
 
@@ -94,24 +94,24 @@ init_boilerplate () {
 	INSTALL_HOOK_DYNAMIC (UsbFinderRelease, PROC_ADDRESS ("nbamUsbFinder.dll", "nbamUsbFinderRelease"));
 	INSTALL_HOOK_DYNAMIC (UsbFinderGetSerialNumber, PROC_ADDRESS ("nbamUsbFinder.dll", "nbamUsbFinderGetSerialNumber"));
 
-	INSTALL_HOOK_DYNAMIC (bngrw_DevReset, PROC_ADDRESS ("bngrw.dll", "BngRwDevReset"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReadMifare, PROC_ADDRESS ("bngrw.dll", "BngRwExReadMifareAllBlock"));
-	INSTALL_HOOK_DYNAMIC (bngrw_fin, PROC_ADDRESS ("bngrw.dll", "BngRwFin"));
-	INSTALL_HOOK_DYNAMIC (bngrw_GetFwVersion, PROC_ADDRESS ("bngrw.dll", "BngRwGetFwVersion"));
-	INSTALL_HOOK_DYNAMIC (bngrw_GetStationID, PROC_ADDRESS ("bngrw.dll", "BngRwGetStationID"));
-	INSTALL_HOOK_DYNAMIC (bngrw_GetRetryCount, PROC_ADDRESS ("bngrw.dll", "BngRwGetTotalRetryCount"));
-	INSTALL_HOOK_DYNAMIC (bngrw_IsCmdExec, PROC_ADDRESS ("bngrw.dll", "BngRwIsCmdExec"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqAction, PROC_ADDRESS ("bngrw.dll", "BngRwReqAction"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqAiccAuth, PROC_ADDRESS ("bngrw.dll", "BngRwReqAiccAuth"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqBeep, PROC_ADDRESS ("bngrw.dll", "BngRwReqBeep"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqFwCleanup, PROC_ADDRESS ("bngrw.dll", "BngRwReqFwCleanup"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqFwVersionUp, PROC_ADDRESS ("bngrw.dll", "BngRwReqFwVersionUp"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqLatchID, PROC_ADDRESS ("bngrw.dll", "BngRwReqLatchID"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqLed, PROC_ADDRESS ("bngrw.dll", "BngRwReqLed"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqSendMail, PROC_ADDRESS ("bngrw.dll", "BngRwReqSendMailTo"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqSendUrl, PROC_ADDRESS ("bngrw.dll", "BngRwReqSendUrlTo"));
-	INSTALL_HOOK_DYNAMIC (bngrw_ReqSetLedPower, PROC_ADDRESS ("bngrw.dll", "BngRwReqSetLedPower"));
-	INSTALL_HOOK_DYNAMIC (bngrw_reqCancel, PROC_ADDRESS ("bngrw.dll", "BngRwReqCancel"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_DevReset, PROC_ADDRESS ("bngrw.dll", "BngRwDevReset"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReadMifare, PROC_ADDRESS ("bngrw.dll", "BngRwExReadMifareAllBlock"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_fin, PROC_ADDRESS ("bngrw.dll", "BngRwFin"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_GetFwVersion, PROC_ADDRESS ("bngrw.dll", "BngRwGetFwVersion"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_GetStationID, PROC_ADDRESS ("bngrw.dll", "BngRwGetStationID"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_GetRetryCount, PROC_ADDRESS ("bngrw.dll", "BngRwGetTotalRetryCount"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_IsCmdExec, PROC_ADDRESS ("bngrw.dll", "BngRwIsCmdExec"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqAction, PROC_ADDRESS ("bngrw.dll", "BngRwReqAction"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqAiccAuth, PROC_ADDRESS ("bngrw.dll", "BngRwReqAiccAuth"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqBeep, PROC_ADDRESS ("bngrw.dll", "BngRwReqBeep"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqFwCleanup, PROC_ADDRESS ("bngrw.dll", "BngRwReqFwCleanup"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqFwVersionUp, PROC_ADDRESS ("bngrw.dll", "BngRwReqFwVersionUp"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqLatchID, PROC_ADDRESS ("bngrw.dll", "BngRwReqLatchID"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqLed, PROC_ADDRESS ("bngrw.dll", "BngRwReqLed"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqSendMail, PROC_ADDRESS ("bngrw.dll", "BngRwReqSendMailTo"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqSendUrl, PROC_ADDRESS ("bngrw.dll", "BngRwReqSendUrlTo"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_ReqSetLedPower, PROC_ADDRESS ("bngrw.dll", "BngRwReqSetLedPower"));
+	// INSTALL_HOOK_DYNAMIC (bngrw_reqCancel, PROC_ADDRESS ("bngrw.dll", "BngRwReqCancel"));
 
 	INSTALL_HOOK_DYNAMIC (ssleay_Shutdown, PROC_ADDRESS ("ssleay32.dll", "SSL_shutdown"));
 }
